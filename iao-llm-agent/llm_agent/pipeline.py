@@ -477,7 +477,7 @@ class Pipeline:
             data = chain.to_json(answer=True, process=True)
             data["answer_generation"]["query"] = query_content
             with open(answer_json_path, 'w', encoding='utf-8') as f:
-                json.dump(data, f, indent=2)
+                json.dump(data, f, indent=2, ensure_ascii=False)
             success = data["answer_generation"]["valid_data"] and "give_answer" in data["answer_generation"]["final_answer"]
             logger.info(f"[process({process_id})] valid={success}")
         return result

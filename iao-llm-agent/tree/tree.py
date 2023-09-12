@@ -134,16 +134,16 @@ class TreeNode:
         返回结果调用链，范围从本节点到根节点
         Returns chained results, starting from this node up to the root node
         '''
-        def sift_first_invalid_message(messages): 
+        def sift_first_invalid_message(messages):
             use_messages = []
             flag = True
-            for message_id in range(len(messages))[::-1]: 
-                if not ("valid" in messages[message_id].keys() and messages[message_id]["valid"] == False): 
+            for message_id in range(len(messages))[::-1]:
+                if not ("valid" in messages[message_id].keys() and messages[message_id]["valid"] == False):
                     use_messages = [messages[message_id]] + use_messages
-                elif flag: 
+                elif flag:
                     flag = False
                     use_messages = [messages[message_id]] + use_messages
-                return use_messages
+            return use_messages
         
         now_node = self
         result = []

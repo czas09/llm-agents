@@ -123,6 +123,7 @@ class DFSChain(BaseSearchMethod):
             assert new_message["role"] == "assistant"
             
             # 1.首先基于content内容构建Thought节点
+            # （一般是出错和重启的时候会创建Thought，因为Function call成功的话，模型返回结果不会带content）
             if "content" in new_message.keys() and new_message["content"] != None: 
                 temp_new_node = TreeNode()
                 temp_new_node.node_type = "Thought"
