@@ -1,0 +1,2 @@
+docid	document_content
+1	"{""category_name"": ""Customized"", ""tool_name"": ""hello world"", ""api_name"": ""get_hello_world"", ""api_description"": ""获取“你好世界”字符串。"", ""required_parameters"": [], ""optional_parameters"": [], ""method"": ""GET""}"

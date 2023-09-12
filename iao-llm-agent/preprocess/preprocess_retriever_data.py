@@ -1,8 +1,8 @@
-
-import json
 import argparse
+import json
 import os
 from tqdm import tqdm
+
 import pandas as pd
 from sklearn.utils import shuffle
 
@@ -17,15 +17,18 @@ parser.add_argument('--dataset_name', type=str, default="", required=True, help=
 # 解析命令行参数
 args = parser.parse_args()
 
+
 ### For dataset split ###
 
 # 读取query文件
 with open(args.query_file, 'r') as f:
     query_data = json.load(f)
 
-# 读取index文件
-with open(args.index_file, 'r') as f:
-    test_index_data = json.load(f)
+# # 读取index文件
+# with open(args.index_file, 'r') as f:
+#     test_index_data = json.load(f)
+
+test_index_data = {}
 
 # 通过集合操作，创建测试集index的集合
 test_index_set = set(map(int, test_index_data.keys()))
@@ -44,18 +47,18 @@ for index, item in tqdm(enumerate(query_data)):
         query_train.append(item)
 
 
-os.makedirs(args.output_dir, exist_ok=True)
+# os.makedirs(args.output_dir, exist_ok=True)
 # 创建输出文件的名字
-output_file_base = args.dataset_name
-train_file = f"{args.output_dir}/train.json"
-test_file = f"{args.output_dir}/test.json"
+# output_file_base = args.dataset_name
+# train_file = f"{args.output_dir}/train.json"
+# test_file = f"{args.output_dir}/test.json"
 
-# 将训练集和测试集写入到对应的json文件中
-with open(train_file, 'w') as f:
-    json.dump(query_train, f)
+# # 将训练集和测试集写入到对应的json文件中
+# with open(train_file, 'w') as f:
+#     json.dump(query_train, f)
 
-with open(test_file, 'w') as f:
-    json.dump(query_test, f)
+# with open(test_file, 'w') as f:
+#     json.dump(query_test, f)
 
 
 ### For dataset preprocess ###
@@ -86,25 +89,25 @@ def process_data(data, pairs):
 process_data(query_train, train_pairs)
 process_data(query_test, test_pairs)
             
-# Shuffle the data using the shuffle function
-train_pairs = shuffle(train_pairs, random_state=42)
-test_pairs = shuffle(test_pairs, random_state=42)
+# # Shuffle the data using the shuffle function
+# train_pairs = shuffle(train_pairs, random_state=42)
+# test_pairs = shuffle(test_pairs, random_state=42)
 
-# Split the shuffled data into queries and labels
-train_queries, train_labels = zip(*train_pairs)
-test_queries, test_labels = zip(*test_pairs)
+# # Split the shuffled data into queries and labels
+# train_queries, train_labels = zip(*train_pairs)
+# test_queries, test_labels = zip(*test_pairs)
 
 documents_df = pd.DataFrame(documents, columns=['docid', 'document_content'])
-train_queries_df = pd.DataFrame(train_queries, columns=['qid', 'query_text'])
-train_labels_df = pd.DataFrame(train_labels, columns=['qid', 'useless', 'docid', 'label'])
-test_queries_df = pd.DataFrame(test_queries, columns=['qid', 'query_text'])
-test_labels_df = pd.DataFrame(test_labels, columns=['qid', 'useless', 'docid', 'label'])
+# train_queries_df = pd.DataFrame(train_queries, columns=['qid', 'query_text'])
+# train_labels_df = pd.DataFrame(train_labels, columns=['qid', 'useless', 'docid', 'label'])
+# test_queries_df = pd.DataFrame(test_queries, columns=['qid', 'query_text'])
+# test_labels_df = pd.DataFrame(test_labels, columns=['qid', 'useless', 'docid', 'label'])
 
 
 
 # Save as .tsv and .txt files
 documents_df.to_csv(args.output_dir + '/corpus.tsv', sep='\t', index=False)
-train_queries_df.to_csv(args.output_dir + '/train.query.txt', sep='\t', index=False, header=False)
-test_queries_df.to_csv(args.output_dir + '/test.query.txt', sep='\t', index=False, header=False)
-train_labels_df.to_csv(args.output_dir + '/qrels.train.tsv', sep='\t', index=False, header=False)
-test_labels_df.to_csv(args.output_dir + '/qrels.test.tsv', sep='\t', index=False, header=False)
+# train_queries_df.to_csv(args.output_dir + '/train.query.txt', sep='\t', index=False, header=False)
+# test_queries_df.to_csv(args.output_dir + '/test.query.txt', sep='\t', index=False, header=False)
+# train_labels_df.to_csv(args.output_dir + '/qrels.train.tsv', sep='\t', index=False, header=False)
+# test_labels_df.to_csv(args.output_dir + '/qrels.test.tsv', sep='\t', index=False, header=False)

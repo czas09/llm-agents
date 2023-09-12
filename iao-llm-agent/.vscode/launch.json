@@ -28,7 +28,7 @@
                 "OPENAI_API_PREFIX": "https://key.langchain.com.cn", 
             }, 
             "args": [
-                "--tool_root_dir", "data/toolenv/tools/",
+                "--tool_root_dir", "data/toolenv_chinese/tools/",
                 "--model_name", "chatgpt_function", 
                 "--openai_key", "sk-kcfJcDXKztSEuMxaSqVjvuniMFIlz8HSr2xApuxivkNINiEc",
                 "--tool_corpus_path", "data/retrieval/corpus.tsv",
