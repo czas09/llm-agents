@@ -216,6 +216,8 @@ class APIEnviron(BaseEnviron):
                     prompt_for_param["example_value"] = default_value
                 openai_schema["parameters"]["properties"][param_name] = prompt_for_param
                 openai_schema["parameters"]["optional"].append(param_name)
+            if len(openai_schema["parameters"]["optional"]) == 0: 
+                openai_schema["parameters"].pop("optional")
 
         return openai_schema, api_doc["category_name"], api_name
 
@@ -279,7 +281,8 @@ class APIEnviron(BaseEnviron):
                 if "final_answer" not in json_data.keys():
                     return "{error:\"must have \"final_answer\"\"}", 2
                 self.success = 1    # succesfully return final_answer
-                return "{\"response\":\"successfully giving the final answer.\"}", 3
+                # return "{\"response\":\"successfully giving the final answer.\"}", 3
+                return "{\"response\":\"得到最终答案。\"}", 3
             else:
                 return "{error:\"\"return_type\" is not a valid choice\"}", 2
             
@@ -298,7 +301,7 @@ class APIEnviron(BaseEnviron):
                         print(colored(f"query to {self.category_names[index]}-->{self.tool_names[index]}-->{action_name}", color="yellow"))
 
                     # 在这里实际执行API调用
-                    response = get_api_response(payload)
+                    response = get_api_response(payload, tools_root=self.tool_root_dir.replace("/", ".").rstrip("."))
 
                     # 1 Hallucinating function names
                     # 4 means that the model decides to pruning by itself
@@ -326,10 +329,10 @@ class APIEnviron(BaseEnviron):
                         status_code = 11
                     else:
                         status_code = 0
-                    return json.dumps(response), status_code
+                    return json.dumps(response, ensure_ascii=False), status_code
                     # except Exception as e:
                     #     return json.dumps({"error": f"Timeout error...{e}", "response": ""}), 5
-            return json.dumps({"error": f"No such function name: {action_name}", "response": ""}), 1
+            return json.dumps({"error": f"No such function name: {action_name}", "response": ""}, ensure_ascii=False), 1
 
 
 class Pipeline: 

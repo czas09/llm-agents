@@ -1,5 +1,5 @@
 '''
-Close-domain QA Pipeline
+开放域问答流程测试
 '''
 
 import argparse

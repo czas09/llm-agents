@@ -86,7 +86,7 @@ class DFSChain(BaseSearchMethod):
                         json_list.append(json_obj)
                 
                 if len(json_list) > 0: 
-                    former_candidates_description += f"{json.dumps(json_list, indent=2)}\n"
+                    former_candidates_description += f"{json.dumps(json_list, indent=2, ensure_ascii=False)}\n"
                     if temp_current_node.observation != "": 
                         former_candidates_description += f"此外，你之前的观察结果(observation)是：{temp_current_node.observation}\n"
                     diverse_prompt = DIVERSITY_PROMPT_ZH
@@ -115,7 +115,7 @@ class DFSChain(BaseSearchMethod):
             
             # ==================================================================
             # parse nodes from OpenAI-message like CoT method
-            # 解析大模型输出结果（role=assistant），构建新节点（3个）
+            # 解析大模型输出结果（role=assistant），构建新节点（3种）
             # Thought -> content
             # Action -> function_call
             # Action Input -> function_call arguments

@@ -1,0 +1,77 @@
+[
+    {
+        "id": "Step 2: 南京今天天气怎么样？PM2.5是多少？",
+        "conversations": [
+            {
+                "from": "system",
+                "value": "你是AutoGPT，你可使用很多工具（功能）来完成以下任务。\n首先，我会向你提供任务描述，然后你就开始执行你的任务。\n在每一个步骤中，你都要给出你的思考(Thought)来分析当前状态并决定下一步该做什么，同时给出一个函数调用来实际执行你的步骤。你的输出应该符合以下格式：\nThought:\nAction\nAction Input:\n\n在函数调用之后，你将获得调用结果，这时你将进入一个新的状态。\n然后你要分析当前所处的状态，然后决定下一步该做什么...\n在经过多轮（思考(Thought)-调用(call)）循环之后，你将最终完成任务，然后你可以给出你的最终答案。\n请记住：\n1.状态的改变是不可逆转的，你不能返回到前面任何一个状态，如果你想重新开始任务的话，请说“我放弃当前尝试，任务重启”。\n2.你所有的思考(thought)都应当简短，最多不超过5个句子。\n3.你可以执行多次尝试，所以如果你计划持续尝试某些条件，你可以在每轮尝试中执行其中一个条件。\n让我们开始吧！\n任务描述：您应该使用函数来处理用户提出的实时查询。请记住：\n1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。\n2.不要使用原始工具名称，只使用子功能的名称。\n您可以访问以下工具：4.pm25_forecast: 查询PM2.5预报\n4.weather_forecast: 查询天气预报\n4.telnum_location: 查询手机号码归属地\n4.hello_world: 返回“你好世界”字符串。\n\n特别地，你可以访问到以下的APIs: [{'name': 'get_pm25_forecast_for_pm25_forecast', 'description': '这个功能的描述文本如下：“根据用户提供的地点查询PM2.5预报”', 'parameters': {'type': 'object', 'properties': {'location': {'type': 'string', 'description': '用户查询PM2.5的地点，比如：南京市'}}, 'required': ['location']}}, {'name': 'get_weather_forecast_for_weather_forecast', 'description': '这个功能的描述文本如下：“根据用户提供的地点查询天气预报”', 'parameters': {'type': 'object', 'properties': {'location': {'type': 'string', 'description': '用户查询天气的地点，比如：南京市'}}, 'required': ['location']}}, {'name': 'search_telnum_location_for_telnum_location', 'description': '这个功能的描述文本如下：“根据用户提供的手机号码查询归属地”', 'parameters': {'type': 'object', 'properties': {'telnum': {'type': 'string', 'description': '用户查询的手机号，比如：13254275648'}}, 'required': ['telnum']}}, {'name': 'get_hello_world_for_hello_world', 'description': '这个功能的描述文本如下：“获取“你好世界”字符串。”', 'parameters': {'type': 'object', 'properties': {}, 'required': [], 'optional': []}}, {'name': 'Finish', 'description': '如果你认为你已经得到了可以回答任务的结果，请调用此函数来提供最终答案。或者，如果你意识到在当前状态下无法继续进行任务，请调用此函数来重新开始。请记住：你必须在尝试结束时始终调用此函数，而用户将只看到最终答案的部分，因此它应包含足够的信息。', 'parameters': {'type': 'object', 'properties': {'return_type': {'type': 'string', 'enum': ['give_answer', 'give_up_and_restart']}, 'final_answer': {'type': 'string', 'description': '你想给到用户的最终答案。如果“return_type”等于“give_answer”，那么你就应该提供这个“final_answer”字段'}}, 'required': ['return_type']}}]"
+            },
+            {
+                "from": "user",
+                "value": "\n南京今天天气怎么样？PM2.5是多少？\n开始！\n"
+            },
+            {
+                "from": "assistant",
+                "value": "\nThought: \nAction: get_weather_forecast_for_weather_forecast\nAction Input: {\n  \"location\": \"南京\"\n}"
+            }
+        ]
+    },
+    {
+        "id": "Step 4: 南京今天天气怎么样？PM2.5是多少？",
+        "conversations": [
+            {
+                "from": "system",
+                "value": "你是AutoGPT，你可使用很多工具（功能）来完成以下任务。\n首先，我会向你提供任务描述，然后你就开始执行你的任务。\n在每一个步骤中，你都要给出你的思考(Thought)来分析当前状态并决定下一步该做什么，同时给出一个函数调用来实际执行你的步骤。你的输出应该符合以下格式：\nThought:\nAction\nAction Input:\n\n在函数调用之后，你将获得调用结果，这时你将进入一个新的状态。\n然后你要分析当前所处的状态，然后决定下一步该做什么...\n在经过多轮（思考(Thought)-调用(call)）循环之后，你将最终完成任务，然后你可以给出你的最终答案。\n请记住：\n1.状态的改变是不可逆转的，你不能返回到前面任何一个状态，如果你想重新开始任务的话，请说“我放弃当前尝试，任务重启”。\n2.你所有的思考(thought)都应当简短，最多不超过5个句子。\n3.你可以执行多次尝试，所以如果你计划持续尝试某些条件，你可以在每轮尝试中执行其中一个条件。\n让我们开始吧！\n任务描述：您应该使用函数来处理用户提出的实时查询。请记住：\n1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。\n2.不要使用原始工具名称，只使用子功能的名称。\n您可以访问以下工具：4.pm25_forecast: 查询PM2.5预报\n4.weather_forecast: 查询天气预报\n4.telnum_location: 查询手机号码归属地\n4.hello_world: 返回“你好世界”字符串。\n\n特别地，你可以访问到以下的APIs: [{'name': 'get_pm25_forecast_for_pm25_forecast', 'description': '这个功能的描述文本如下：“根据用户提供的地点查询PM2.5预报”', 'parameters': {'type': 'object', 'properties': {'location': {'type': 'string', 'description': '用户查询PM2.5的地点，比如：南京市'}}, 'required': ['location']}}, {'name': 'get_weather_forecast_for_weather_forecast', 'description': '这个功能的描述文本如下：“根据用户提供的地点查询天气预报”', 'parameters': {'type': 'object', 'properties': {'location': {'type': 'string', 'description': '用户查询天气的地点，比如：南京市'}}, 'required': ['location']}}, {'name': 'search_telnum_location_for_telnum_location', 'description': '这个功能的描述文本如下：“根据用户提供的手机号码查询归属地”', 'parameters': {'type': 'object', 'properties': {'telnum': {'type': 'string', 'description': '用户查询的手机号，比如：13254275648'}}, 'required': ['telnum']}}, {'name': 'get_hello_world_for_hello_world', 'description': '这个功能的描述文本如下：“获取“你好世界”字符串。”', 'parameters': {'type': 'object', 'properties': {}, 'required': [], 'optional': []}}, {'name': 'Finish', 'description': '如果你认为你已经得到了可以回答任务的结果，请调用此函数来提供最终答案。或者，如果你意识到在当前状态下无法继续进行任务，请调用此函数来重新开始。请记住：你必须在尝试结束时始终调用此函数，而用户将只看到最终答案的部分，因此它应包含足够的信息。', 'parameters': {'type': 'object', 'properties': {'return_type': {'type': 'string', 'enum': ['give_answer', 'give_up_and_restart']}, 'final_answer': {'type': 'string', 'description': '你想给到用户的最终答案。如果“return_type”等于“give_answer”，那么你就应该提供这个“final_answer”字段'}}, 'required': ['return_type']}}]"
+            },
+            {
+                "from": "user",
+                "value": "\n南京今天天气怎么样？PM2.5是多少？\n开始！\n"
+            },
+            {
+                "from": "assistant",
+                "value": "\nThought: \nAction: get_weather_forecast_for_weather_forecast\nAction Input: {\n  \"location\": \"南京\"\n}"
+            },
+            {
+                "from": "function",
+                "value": "{\"error\": \"\", \"response\": \"晴天\"}"
+            },
+            {
+                "from": "assistant",
+                "value": "\nThought: \nAction: get_pm25_forecast_for_pm25_forecast\nAction Input: {\n  \"location\": \"南京\"\n}"
+            }
+        ]
+    },
+    {
+        "id": "Step 6: 南京今天天气怎么样？PM2.5是多少？",
+        "conversations": [
+            {
+                "from": "system",
+                "value": "你是AutoGPT，你可使用很多工具（功能）来完成以下任务。\n首先，我会向你提供任务描述，然后你就开始执行你的任务。\n在每一个步骤中，你都要给出你的思考(Thought)来分析当前状态并决定下一步该做什么，同时给出一个函数调用来实际执行你的步骤。你的输出应该符合以下格式：\nThought:\nAction\nAction Input:\n\n在函数调用之后，你将获得调用结果，这时你将进入一个新的状态。\n然后你要分析当前所处的状态，然后决定下一步该做什么...\n在经过多轮（思考(Thought)-调用(call)）循环之后，你将最终完成任务，然后你可以给出你的最终答案。\n请记住：\n1.状态的改变是不可逆转的，你不能返回到前面任何一个状态，如果你想重新开始任务的话，请说“我放弃当前尝试，任务重启”。\n2.你所有的思考(thought)都应当简短，最多不超过5个句子。\n3.你可以执行多次尝试，所以如果你计划持续尝试某些条件，你可以在每轮尝试中执行其中一个条件。\n让我们开始吧！\n任务描述：您应该使用函数来处理用户提出的实时查询。请记住：\n1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。\n2.不要使用原始工具名称，只使用子功能的名称。\n您可以访问以下工具：1.pm25_forecast: 查询PM2.5预报\n2.weather_forecast: 查询天气预报\n3.telnum_location: 查询手机号码归属地\n5.hello_world: 返回“你好世界”字符串。\n\n特别地，你可以访问到以下的APIs: [{'name': 'get_pm25_forecast_for_pm25_forecast', 'description': '这个功能的描述文本如下：“根据用户提供的地点查询PM2.5预报”', 'parameters': {'type': 'object', 'properties': {'location': {'type': 'string', 'description': '用户查询PM2.5的地点，比如：南京市'}}, 'required': ['location']}}, {'name': 'get_weather_forecast_for_weather_forecast', 'description': '这个功能的描述文本如下：“根据用户提供的地点查询天气预报”', 'parameters': {'type': 'object', 'properties': {'location': {'type': 'string', 'description': '用户查询天气的地点，比如：南京市'}}, 'required': ['location']}}, {'name': 'search_telnum_location_for_telnum_location', 'description': '这个功能的描述文本如下：“根据用户提供的手机号码查询归属地”', 'parameters': {'type': 'object', 'properties': {'telnum': {'type': 'string', 'description': '用户查询的手机号，比如：13254275648'}}, 'required': ['telnum']}}, {'name': 'get_hello_world_for_hello_world', 'description': '这个功能的描述文本如下：“获取“你好世界”字符串。”', 'parameters': {'type': 'object', 'properties': {}, 'required': [], 'optional': []}}, {'name': 'Finish', 'description': '如果你认为你已经得到了可以回答任务的结果，请调用此函数来提供最终答案。或者，如果你意识到在当前状态下无法继续进行任务，请调用此函数来重新开始。请记住：你必须在尝试结束时始终调用此函数，而用户将只看到最终答案的部分，因此它应包含足够的信息。', 'parameters': {'type': 'object', 'properties': {'return_type': {'type': 'string', 'enum': ['give_answer', 'give_up_and_restart']}, 'final_answer': {'type': 'string', 'description': '你想给到用户的最终答案。如果“return_type”等于“give_answer”，那么你就应该提供这个“final_answer”字段'}}, 'required': ['return_type']}}]"
+            },
+            {
+                "from": "user",
+                "value": "\n南京今天天气怎么样？PM2.5是多少？\n开始！\n"
+            },
+            {
+                "from": "assistant",
+                "value": "\nThought: \nAction: get_weather_forecast_for_weather_forecast\nAction Input: {\n  \"location\": \"南京\"\n}"
+            },
+            {
+                "from": "function",
+                "value": "{\"error\": \"\", \"response\": \"晴天\"}"
+            },
+            {
+                "from": "assistant",
+                "value": "\nThought: \nAction: get_pm25_forecast_for_pm25_forecast\nAction Input: {\n  \"location\": \"南京\"\n}"
+            },
+            {
+                "from": "function",
+                "value": "{\"error\": \"\", \"response\": \"良好\"}"
+            },
+            {
+                "from": "assistant",
+                "value": "\nThought: \nAction: Finish\nAction Input: {\n  \"return_type\": \"give_answer\",\n  \"final_answer\": \"南京今天天气是晴天，PM2.5指数为良好。\"\n}"
+            }
+        ]
+    }
+]

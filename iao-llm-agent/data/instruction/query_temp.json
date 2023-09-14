@@ -1,6 +1,6 @@
 [
     {
-        "query": "I want to get a 'hello world' string.",
-        "query_id": 200004
+        "query": "请给我传一个“你好世界”字符串。",
+        "query_id": 200010
     }
 ]
