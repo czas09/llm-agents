@@ -1,0 +1,23 @@
+{
+    "tool_description": "根据归属地查询经纬度",
+    "tool_name": "search coordinates by location",
+    "title": "search coordinates by location",
+    "api_list": [
+        {
+            "name": "get_coordinates_by_location",
+            "url": "",
+            "description": "根据用户提供的归属地查询对应的经纬度",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location", 
+                    "type": "STRING", 
+                    "description": "需要查询经纬度的归属地，比如：江苏省南京市", 
+                    "default": ""
+                }
+            ],
+            "optional_parameters": []
+        }
+    ],
+    "standardized_name": "search_coordinates_by_location"
+}

@@ -1,0 +1,790 @@
+{
+  "win": true,
+  "tree": {
+    "size": 13,
+    "max_length": 13,
+    "tree": {
+      "is_terminal": false,
+      "pruned": false,
+      "finished": false,
+      "depth": 0,
+      "node_type": "Action Input",
+      "description": "",
+      "Elo": 1000.0,
+      "child_count": 1,
+      "expand_num": 0,
+      "io_state": {},
+      "children": [
+        {
+          "is_terminal": false,
+          "pruned": false,
+          "finished": false,
+          "depth": 1,
+          "node_type": "Action",
+          "description": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+          "Elo": 1000.0,
+          "child_count": 1,
+          "expand_num": 0,
+          "children": [
+            {
+              "is_terminal": false,
+              "pruned": false,
+              "finished": false,
+              "depth": 2,
+              "node_type": "Action Input",
+              "description": "{\n\"domain_name\": \"www.zyw.com\"\n}",
+              "Elo": 1000.0,
+              "observation": "{\"error\": \"\", \"response\": \"{'ip': '29.246.168.188'}\"}",
+              "observation_code": 0,
+              "child_count": 1,
+              "expand_num": 1,
+              "io_state": {},
+              "children": [
+                {
+                  "is_terminal": false,
+                  "pruned": false,
+                  "finished": false,
+                  "depth": 3,
+                  "node_type": "Action",
+                  "description": "get_coordinates_by_location_for_search_coordinates_by_location",
+                  "Elo": 1000.0,
+                  "child_count": 1,
+                  "expand_num": 0,
+                  "children": [
+                    {
+                      "is_terminal": false,
+                      "pruned": false,
+                      "finished": false,
+                      "depth": 4,
+                      "node_type": "Action Input",
+                      "description": "{\n\"location\": \"29.246.168.188\"\n}",
+                      "Elo": 1000.0,
+                      "observation": "{\"error\": \"\", \"response\": \"None\"}",
+                      "observation_code": 0,
+                      "child_count": 1,
+                      "expand_num": 2,
+                      "io_state": {},
+                      "children": [
+                        {
+                          "is_terminal": false,
+                          "pruned": false,
+                          "finished": false,
+                          "depth": 5,
+                          "node_type": "Action",
+                          "description": "search_telnum_location_for_telnum_location",
+                          "Elo": 1000.0,
+                          "child_count": 1,
+                          "expand_num": 0,
+                          "children": [
+                            {
+                              "is_terminal": false,
+                              "pruned": false,
+                              "finished": false,
+                              "depth": 6,
+                              "node_type": "Action Input",
+                              "description": "{\n\"telnum\": \"29.246.168.188\"\n}",
+                              "Elo": 1000.0,
+                              "observation": "{\"error\": \"\", \"response\": \"None\"}",
+                              "observation_code": 0,
+                              "child_count": 1,
+                              "expand_num": 3,
+                              "io_state": {},
+                              "children": [
+                                {
+                                  "is_terminal": false,
+                                  "pruned": false,
+                                  "finished": false,
+                                  "depth": 7,
+                                  "node_type": "Action",
+                                  "description": "get_location_by_ip_address_for_search_location_by_ip_address",
+                                  "Elo": 1000.0,
+                                  "child_count": 1,
+                                  "expand_num": 0,
+                                  "children": [
+                                    {
+                                      "is_terminal": false,
+                                      "pruned": false,
+                                      "finished": true,
+                                      "depth": 8,
+                                      "node_type": "Action Input",
+                                      "description": "{\n\"ip_address\": \"29.246.168.188\"\n}",
+                                      "Elo": 1000.0,
+                                      "observation": "{\"error\": \"\", \"response\": \"{'location': '江苏省南京市'}\"}",
+                                      "observation_code": 0,
+                                      "child_count": 1,
+                                      "expand_num": 4,
+                                      "io_state": {},
+                                      "children": [
+                                        {
+                                          "is_terminal": false,
+                                          "pruned": false,
+                                          "finished": true,
+                                          "depth": 9,
+                                          "node_type": "Action",
+                                          "description": "get_coordinates_by_location_for_search_coordinates_by_location",
+                                          "Elo": 1000.0,
+                                          "child_count": 1,
+                                          "expand_num": 0,
+                                          "children": [
+                                            {
+                                              "is_terminal": false,
+                                              "pruned": false,
+                                              "finished": true,
+                                              "depth": 10,
+                                              "node_type": "Action Input",
+                                              "description": "{\n\"location\": \"江苏省南京市\"\n}",
+                                              "Elo": 1000.0,
+                                              "observation": "{\"error\": \"\", \"response\": \"北纬32°，西经118°\"}",
+                                              "observation_code": 0,
+                                              "child_count": 1,
+                                              "expand_num": 5,
+                                              "io_state": {},
+                                              "children": [
+                                                {
+                                                  "is_terminal": false,
+                                                  "pruned": false,
+                                                  "finished": true,
+                                                  "depth": 11,
+                                                  "node_type": "Action",
+                                                  "description": "Finish",
+                                                  "Elo": 1000.0,
+                                                  "child_count": 1,
+                                                  "expand_num": 0,
+                                                  "children": [
+                                                    {
+                                                      "is_terminal": false,
+                                                      "pruned": false,
+                                                      "finished": true,
+                                                      "depth": 12,
+                                                      "node_type": "Action Input",
+                                                      "description": "{\n\"return_type\": \"give_answer\",\n\"final_answer\": \"域名www.zyw.com的经纬度是北纬32°，西经118°\"\n}",
+                                                      "Elo": 1000.0,
+                                                      "observation": "{\"response\":\"得到最终答案。\"}",
+                                                      "observation_code": 3,
+                                                      "child_count": 0,
+                                                      "expand_num": 6,
+                                                      "io_state": {},
+                                                      "children": []
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "forward_args": {
+    "single_chain_max_step": 12,
+    "tree_beam_size": 2,
+    "max_query_count": 200,
+    "answer": 1,
+    "with_filter": false
+  },
+  "compare_candidates": [
+    [
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": false,
+        "depth": 1,
+        "node_type": "Action",
+        "description": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+        "Elo": 1000.0,
+        "child_count": 1,
+        "expand_num": 0
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": false,
+        "depth": 2,
+        "node_type": "Action Input",
+        "description": "{\n\"domain_name\": \"www.zyw.com\"\n}",
+        "Elo": 1000.0,
+        "observation": "{\"error\": \"\", \"response\": \"{'ip': '29.246.168.188'}\"}",
+        "observation_code": 0,
+        "child_count": 1,
+        "expand_num": 1,
+        "io_state": {}
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": false,
+        "depth": 3,
+        "node_type": "Action",
+        "description": "get_coordinates_by_location_for_search_coordinates_by_location",
+        "Elo": 1000.0,
+        "child_count": 1,
+        "expand_num": 0
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": false,
+        "depth": 4,
+        "node_type": "Action Input",
+        "description": "{\n\"location\": \"29.246.168.188\"\n}",
+        "Elo": 1000.0,
+        "observation": "{\"error\": \"\", \"response\": \"None\"}",
+        "observation_code": 0,
+        "child_count": 1,
+        "expand_num": 2,
+        "io_state": {}
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": false,
+        "depth": 5,
+        "node_type": "Action",
+        "description": "search_telnum_location_for_telnum_location",
+        "Elo": 1000.0,
+        "child_count": 1,
+        "expand_num": 0
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": false,
+        "depth": 6,
+        "node_type": "Action Input",
+        "description": "{\n\"telnum\": \"29.246.168.188\"\n}",
+        "Elo": 1000.0,
+        "observation": "{\"error\": \"\", \"response\": \"None\"}",
+        "observation_code": 0,
+        "child_count": 1,
+        "expand_num": 3,
+        "io_state": {}
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": false,
+        "depth": 7,
+        "node_type": "Action",
+        "description": "get_location_by_ip_address_for_search_location_by_ip_address",
+        "Elo": 1000.0,
+        "child_count": 1,
+        "expand_num": 0
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": true,
+        "depth": 8,
+        "node_type": "Action Input",
+        "description": "{\n\"ip_address\": \"29.246.168.188\"\n}",
+        "Elo": 1000.0,
+        "observation": "{\"error\": \"\", \"response\": \"{'location': '江苏省南京市'}\"}",
+        "observation_code": 0,
+        "child_count": 1,
+        "expand_num": 4,
+        "io_state": {}
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": true,
+        "depth": 9,
+        "node_type": "Action",
+        "description": "get_coordinates_by_location_for_search_coordinates_by_location",
+        "Elo": 1000.0,
+        "child_count": 1,
+        "expand_num": 0
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": true,
+        "depth": 10,
+        "node_type": "Action Input",
+        "description": "{\n\"location\": \"江苏省南京市\"\n}",
+        "Elo": 1000.0,
+        "observation": "{\"error\": \"\", \"response\": \"北纬32°，西经118°\"}",
+        "observation_code": 0,
+        "child_count": 1,
+        "expand_num": 5,
+        "io_state": {}
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": true,
+        "depth": 11,
+        "node_type": "Action",
+        "description": "Finish",
+        "Elo": 1000.0,
+        "child_count": 1,
+        "expand_num": 0
+      },
+      {
+        "is_terminal": false,
+        "pruned": false,
+        "finished": true,
+        "depth": 12,
+        "node_type": "Action Input",
+        "description": "{\n\"return_type\": \"give_answer\",\n\"final_answer\": \"域名www.zyw.com的经纬度是北纬32°，西经118°\"\n}",
+        "Elo": 1000.0,
+        "observation": "{\"response\":\"得到最终答案。\"}",
+        "observation_code": 3,
+        "child_count": 0,
+        "expand_num": 6,
+        "io_state": {}
+      }
+    ]
+  ],
+  "answer_generation": {
+    "valid_data": true,
+    "query_count": 6,
+    "total_tokens": 10138,
+    "final_answer": "{\n\"return_type\": \"give_answer\",\n\"final_answer\": \"域名www.zyw.com的经纬度是北纬32°，西经118°\"\n}",
+    "finish_type": "give_answer",
+    "function": [
+      {
+        "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+        "description": "这是“search_coordinates_by_location”工具的子功能，你可以使用这个工具。这个功能的描述文本如下：“根据用户提供的归属地查询对应的经纬度”",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "需要查询经纬度的归属地，比如：江苏省南京市"
+            }
+          },
+          "required": [
+            "location"
+          ]
+        }
+      },
+      {
+        "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+        "description": "这是“search_ip_by_domain_name”工具的子功能，你可以使用这个工具。这个功能的描述文本如下：“根据用户提供的域名查询对应的IP”",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "domain_name": {
+              "type": "string",
+              "description": "需要查询IP的域名，比如：www.zyw.com"
+            }
+          },
+          "required": [
+            "domain_name"
+          ]
+        }
+      },
+      {
+        "name": "get_weather_forecast_for_weather_forecast",
+        "description": "这是“weather_forecast”工具的子功能，你可以使用这个工具。这个功能的描述文本如下：“根据用户提供的地点查询天气预报”",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "用户查询天气的地点，比如：南京市"
+            }
+          },
+          "required": [
+            "location"
+          ]
+        }
+      },
+      {
+        "name": "search_telnum_location_for_telnum_location",
+        "description": "这是“telnum_location”工具的子功能，你可以使用这个工具。这个功能的描述文本如下：“根据用户提供的手机号码查询归属地”",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "telnum": {
+              "type": "string",
+              "description": "用户查询的手机号，比如：13254275648"
+            }
+          },
+          "required": [
+            "telnum"
+          ]
+        }
+      },
+      {
+        "name": "get_location_by_ip_address_for_search_location_by_ip_address",
+        "description": "这是“search_location_by_ip_address”工具的子功能，你可以使用这个工具。这个功能的描述文本如下：“根据用户提供的IP地址查询对应的归属地”",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ip_address": {
+              "type": "string",
+              "description": "需要查询归属地的IP地址，比如：10.0.106.333"
+            }
+          },
+          "required": [
+            "ip_address"
+          ]
+        }
+      },
+      {
+        "name": "get_pm25_forecast_for_pm25_forecast",
+        "description": "这是“pm25_forecast”工具的子功能，你可以使用这个工具。这个功能的描述文本如下：“根据用户提供的地点查询PM2.5预报”",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "用户查询PM2.5的地点，比如：南京市"
+            }
+          },
+          "required": [
+            "location"
+          ]
+        }
+      },
+      {
+        "name": "Finish",
+        "description": "如果你认为你已经得到了可以回答任务的结果，请调用此函数来提供最终答案。或者，如果你意识到在当前状态下无法继续进行任务，请调用此函数来重新开始。请记住：你必须在尝试结束时始终调用此函数，而用户将只看到最终答案的部分，因此它应包含足够的信息。",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "return_type": {
+              "type": "string",
+              "enum": [
+                "give_answer",
+                "give_up_and_restart"
+              ]
+            },
+            "final_answer": {
+              "type": "string",
+              "description": "你想给到用户的最终答案。如果“return_type”等于“give_answer”，那么你就应该提供这个“final_answer”字段"
+            }
+          },
+          "required": [
+            "return_type"
+          ]
+        }
+      }
+    ],
+    "chain": [],
+    "train_messages": [
+      [
+        {
+          "role": "system",
+          "content": "你是AutoGPT，你可使用很多工具（功能）来完成以下任务。\n首先，我会向你提供任务描述，然后你就开始执行你的任务。\n每一个任务的基本形式都是“根据A查询B”的形式，其中查询条件可能是“根据多个A”的并列形式，查询对象可能是“查询多个B”的并列形式\n当前可调用的函数中，可能不存在一次性完成查询任务的函数，这时你需要使用同一个查询条件，调用其他不同的函数获得中间结果，并尝试通过多次调用，最终获得查询目标。\n注意，你的新一轮调用中，查询条件一定需要包含在上一轮调用的返回结果(observation)里面。\n在每一个步骤中，你都要给出你的思考(Thought)来分析当前状态并决定下一步该做什么，同时给出一个函数调用来实际执行你的步骤。\n在函数调用之后，你将获得调用结果，这时你将进入一个新的状态。\n然后你要分析当前所处的状态，然后决定下一步该做什么...\n在经过多轮（思考(Thought)-调用(call)）循环之后，你将最终完成任务，然后你可以给出你的最终答案。\n请记住：\n1.状态的改变是不可逆转的，你不能返回到前面任何一个状态，如果你想重新开始任务的话，请说“我放弃当前尝试，任务重启”。\n2.你所有的思考(thought)都应当简短，最多不超过5个句子。\n3.你可以执行多次尝试，所以如果你计划持续尝试某些条件，你可以在每轮尝试中执行其中一个条件。\n让我们开始吧！\n任务描述：您应该使用函数来处理用户提出的实时查询。请记住：\n1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。\n2.不要使用原始工具名称，只使用子功能的名称。\n您可以访问以下工具：1.search_coordinates_by_location: 根据归属地查询经纬度\n2.search_ip_by_domain_name: 根据域名查询IP\n3.weather_forecast: 查询天气预报\n4.telnum_location: 查询手机号码归属地\n5.search_location_by_ip_address: 根据IP查询归属地\n6.pm25_forecast: 查询PM2.5预报\n"
+        },
+        {
+          "role": "user",
+          "content": "\n请根据域名www.zyw.com查询经纬度\n开始！\n"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+            "arguments": "{\n\"domain_name\": \"www.zyw.com\"\n}"
+          }
+        }
+      ],
+      [
+        {
+          "role": "system",
+          "content": "你是AutoGPT，你可使用很多工具（功能）来完成以下任务。\n首先，我会向你提供任务描述，然后你就开始执行你的任务。\n每一个任务的基本形式都是“根据A查询B”的形式，其中查询条件可能是“根据多个A”的并列形式，查询对象可能是“查询多个B”的并列形式\n当前可调用的函数中，可能不存在一次性完成查询任务的函数，这时你需要使用同一个查询条件，调用其他不同的函数获得中间结果，并尝试通过多次调用，最终获得查询目标。\n注意，你的新一轮调用中，查询条件一定需要包含在上一轮调用的返回结果(observation)里面。\n在每一个步骤中，你都要给出你的思考(Thought)来分析当前状态并决定下一步该做什么，同时给出一个函数调用来实际执行你的步骤。\n在函数调用之后，你将获得调用结果，这时你将进入一个新的状态。\n然后你要分析当前所处的状态，然后决定下一步该做什么...\n在经过多轮（思考(Thought)-调用(call)）循环之后，你将最终完成任务，然后你可以给出你的最终答案。\n请记住：\n1.状态的改变是不可逆转的，你不能返回到前面任何一个状态，如果你想重新开始任务的话，请说“我放弃当前尝试，任务重启”。\n2.你所有的思考(thought)都应当简短，最多不超过5个句子。\n3.你可以执行多次尝试，所以如果你计划持续尝试某些条件，你可以在每轮尝试中执行其中一个条件。\n让我们开始吧！\n任务描述：您应该使用函数来处理用户提出的实时查询。请记住：\n1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。\n2.不要使用原始工具名称，只使用子功能的名称。\n您可以访问以下工具：1.search_coordinates_by_location: 根据归属地查询经纬度\n2.search_ip_by_domain_name: 根据域名查询IP\n3.weather_forecast: 查询天气预报\n4.telnum_location: 查询手机号码归属地\n5.search_location_by_ip_address: 根据IP查询归属地\n6.pm25_forecast: 查询PM2.5预报\n"
+        },
+        {
+          "role": "user",
+          "content": "\n请根据域名www.zyw.com查询经纬度\n开始！\n"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+            "arguments": "{\n\"domain_name\": \"www.zyw.com\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+          "content": "{\"error\": \"\", \"response\": \"{'ip': '29.246.168.188'}\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+            "arguments": "{\n\"location\": \"29.246.168.188\"\n}"
+          }
+        }
+      ],
+      [
+        {
+          "role": "system",
+          "content": "你是AutoGPT，你可使用很多工具（功能）来完成以下任务。\n首先，我会向你提供任务描述，然后你就开始执行你的任务。\n每一个任务的基本形式都是“根据A查询B”的形式，其中查询条件可能是“根据多个A”的并列形式，查询对象可能是“查询多个B”的并列形式\n当前可调用的函数中，可能不存在一次性完成查询任务的函数，这时你需要使用同一个查询条件，调用其他不同的函数获得中间结果，并尝试通过多次调用，最终获得查询目标。\n注意，你的新一轮调用中，查询条件一定需要包含在上一轮调用的返回结果(observation)里面。\n在每一个步骤中，你都要给出你的思考(Thought)来分析当前状态并决定下一步该做什么，同时给出一个函数调用来实际执行你的步骤。\n在函数调用之后，你将获得调用结果，这时你将进入一个新的状态。\n然后你要分析当前所处的状态，然后决定下一步该做什么...\n在经过多轮（思考(Thought)-调用(call)）循环之后，你将最终完成任务，然后你可以给出你的最终答案。\n请记住：\n1.状态的改变是不可逆转的，你不能返回到前面任何一个状态，如果你想重新开始任务的话，请说“我放弃当前尝试，任务重启”。\n2.你所有的思考(thought)都应当简短，最多不超过5个句子。\n3.你可以执行多次尝试，所以如果你计划持续尝试某些条件，你可以在每轮尝试中执行其中一个条件。\n让我们开始吧！\n任务描述：您应该使用函数来处理用户提出的实时查询。请记住：\n1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。\n2.不要使用原始工具名称，只使用子功能的名称。\n您可以访问以下工具：1.search_coordinates_by_location: 根据归属地查询经纬度\n2.search_ip_by_domain_name: 根据域名查询IP\n3.weather_forecast: 查询天气预报\n4.telnum_location: 查询手机号码归属地\n5.search_location_by_ip_address: 根据IP查询归属地\n6.pm25_forecast: 查询PM2.5预报\n"
+        },
+        {
+          "role": "user",
+          "content": "\n请根据域名www.zyw.com查询经纬度\n开始！\n"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+            "arguments": "{\n\"domain_name\": \"www.zyw.com\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+          "content": "{\"error\": \"\", \"response\": \"{'ip': '29.246.168.188'}\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+            "arguments": "{\n\"location\": \"29.246.168.188\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+          "content": "{\"error\": \"\", \"response\": \"None\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "search_telnum_location_for_telnum_location",
+            "arguments": "{\n\"telnum\": \"29.246.168.188\"\n}"
+          }
+        }
+      ],
+      [
+        {
+          "role": "system",
+          "content": "你是AutoGPT，你可使用很多工具（功能）来完成以下任务。\n首先，我会向你提供任务描述，然后你就开始执行你的任务。\n每一个任务的基本形式都是“根据A查询B”的形式，其中查询条件可能是“根据多个A”的并列形式，查询对象可能是“查询多个B”的并列形式\n当前可调用的函数中，可能不存在一次性完成查询任务的函数，这时你需要使用同一个查询条件，调用其他不同的函数获得中间结果，并尝试通过多次调用，最终获得查询目标。\n注意，你的新一轮调用中，查询条件一定需要包含在上一轮调用的返回结果(observation)里面。\n在每一个步骤中，你都要给出你的思考(Thought)来分析当前状态并决定下一步该做什么，同时给出一个函数调用来实际执行你的步骤。\n在函数调用之后，你将获得调用结果，这时你将进入一个新的状态。\n然后你要分析当前所处的状态，然后决定下一步该做什么...\n在经过多轮（思考(Thought)-调用(call)）循环之后，你将最终完成任务，然后你可以给出你的最终答案。\n请记住：\n1.状态的改变是不可逆转的，你不能返回到前面任何一个状态，如果你想重新开始任务的话，请说“我放弃当前尝试，任务重启”。\n2.你所有的思考(thought)都应当简短，最多不超过5个句子。\n3.你可以执行多次尝试，所以如果你计划持续尝试某些条件，你可以在每轮尝试中执行其中一个条件。\n让我们开始吧！\n任务描述：您应该使用函数来处理用户提出的实时查询。请记住：\n1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。\n2.不要使用原始工具名称，只使用子功能的名称。\n您可以访问以下工具：1.search_coordinates_by_location: 根据归属地查询经纬度\n2.search_ip_by_domain_name: 根据域名查询IP\n3.weather_forecast: 查询天气预报\n4.telnum_location: 查询手机号码归属地\n5.search_location_by_ip_address: 根据IP查询归属地\n6.pm25_forecast: 查询PM2.5预报\n"
+        },
+        {
+          "role": "user",
+          "content": "\n请根据域名www.zyw.com查询经纬度\n开始！\n"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+            "arguments": "{\n\"domain_name\": \"www.zyw.com\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+          "content": "{\"error\": \"\", \"response\": \"{'ip': '29.246.168.188'}\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+            "arguments": "{\n\"location\": \"29.246.168.188\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+          "content": "{\"error\": \"\", \"response\": \"None\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "search_telnum_location_for_telnum_location",
+            "arguments": "{\n\"telnum\": \"29.246.168.188\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "search_telnum_location_for_telnum_location",
+          "content": "{\"error\": \"\", \"response\": \"None\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_location_by_ip_address_for_search_location_by_ip_address",
+            "arguments": "{\n\"ip_address\": \"29.246.168.188\"\n}"
+          }
+        }
+      ],
+      [
+        {
+          "role": "system",
+          "content": "你是AutoGPT，你可使用很多工具（功能）来完成以下任务。\n首先，我会向你提供任务描述，然后你就开始执行你的任务。\n每一个任务的基本形式都是“根据A查询B”的形式，其中查询条件可能是“根据多个A”的并列形式，查询对象可能是“查询多个B”的并列形式\n当前可调用的函数中，可能不存在一次性完成查询任务的函数，这时你需要使用同一个查询条件，调用其他不同的函数获得中间结果，并尝试通过多次调用，最终获得查询目标。\n注意，你的新一轮调用中，查询条件一定需要包含在上一轮调用的返回结果(observation)里面。\n在每一个步骤中，你都要给出你的思考(Thought)来分析当前状态并决定下一步该做什么，同时给出一个函数调用来实际执行你的步骤。\n在函数调用之后，你将获得调用结果，这时你将进入一个新的状态。\n然后你要分析当前所处的状态，然后决定下一步该做什么...\n在经过多轮（思考(Thought)-调用(call)）循环之后，你将最终完成任务，然后你可以给出你的最终答案。\n请记住：\n1.状态的改变是不可逆转的，你不能返回到前面任何一个状态，如果你想重新开始任务的话，请说“我放弃当前尝试，任务重启”。\n2.你所有的思考(thought)都应当简短，最多不超过5个句子。\n3.你可以执行多次尝试，所以如果你计划持续尝试某些条件，你可以在每轮尝试中执行其中一个条件。\n让我们开始吧！\n任务描述：您应该使用函数来处理用户提出的实时查询。请记住：\n1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。\n2.不要使用原始工具名称，只使用子功能的名称。\n您可以访问以下工具：1.search_coordinates_by_location: 根据归属地查询经纬度\n2.search_ip_by_domain_name: 根据域名查询IP\n3.weather_forecast: 查询天气预报\n4.telnum_location: 查询手机号码归属地\n5.search_location_by_ip_address: 根据IP查询归属地\n6.pm25_forecast: 查询PM2.5预报\n"
+        },
+        {
+          "role": "user",
+          "content": "\n请根据域名www.zyw.com查询经纬度\n开始！\n"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+            "arguments": "{\n\"domain_name\": \"www.zyw.com\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+          "content": "{\"error\": \"\", \"response\": \"{'ip': '29.246.168.188'}\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+            "arguments": "{\n\"location\": \"29.246.168.188\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+          "content": "{\"error\": \"\", \"response\": \"None\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "search_telnum_location_for_telnum_location",
+            "arguments": "{\n\"telnum\": \"29.246.168.188\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "search_telnum_location_for_telnum_location",
+          "content": "{\"error\": \"\", \"response\": \"None\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_location_by_ip_address_for_search_location_by_ip_address",
+            "arguments": "{\n\"ip_address\": \"29.246.168.188\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_location_by_ip_address_for_search_location_by_ip_address",
+          "content": "{\"error\": \"\", \"response\": \"{'location': '江苏省南京市'}\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+            "arguments": "{\n\"location\": \"江苏省南京市\"\n}"
+          }
+        }
+      ],
+      [
+        {
+          "role": "system",
+          "content": "你是AutoGPT，你可使用很多工具（功能）来完成以下任务。\n首先，我会向你提供任务描述，然后你就开始执行你的任务。\n每一个任务的基本形式都是“根据A查询B”的形式，其中查询条件可能是“根据多个A”的并列形式，查询对象可能是“查询多个B”的并列形式\n当前可调用的函数中，可能不存在一次性完成查询任务的函数，这时你需要使用同一个查询条件，调用其他不同的函数获得中间结果，并尝试通过多次调用，最终获得查询目标。\n注意，你的新一轮调用中，查询条件一定需要包含在上一轮调用的返回结果(observation)里面。\n在每一个步骤中，你都要给出你的思考(Thought)来分析当前状态并决定下一步该做什么，同时给出一个函数调用来实际执行你的步骤。\n在函数调用之后，你将获得调用结果，这时你将进入一个新的状态。\n然后你要分析当前所处的状态，然后决定下一步该做什么...\n在经过多轮（思考(Thought)-调用(call)）循环之后，你将最终完成任务，然后你可以给出你的最终答案。\n请记住：\n1.状态的改变是不可逆转的，你不能返回到前面任何一个状态，如果你想重新开始任务的话，请说“我放弃当前尝试，任务重启”。\n2.你所有的思考(thought)都应当简短，最多不超过5个句子。\n3.你可以执行多次尝试，所以如果你计划持续尝试某些条件，你可以在每轮尝试中执行其中一个条件。\n让我们开始吧！\n任务描述：您应该使用函数来处理用户提出的实时查询。请记住：\n1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。\n2.不要使用原始工具名称，只使用子功能的名称。\n您可以访问以下工具：1.search_coordinates_by_location: 根据归属地查询经纬度\n2.search_ip_by_domain_name: 根据域名查询IP\n3.weather_forecast: 查询天气预报\n4.telnum_location: 查询手机号码归属地\n5.search_location_by_ip_address: 根据IP查询归属地\n6.pm25_forecast: 查询PM2.5预报\n"
+        },
+        {
+          "role": "user",
+          "content": "\n请根据域名www.zyw.com查询经纬度\n开始！\n"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+            "arguments": "{\n\"domain_name\": \"www.zyw.com\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_ip_by_domain_name_for_search_ip_by_domain_name",
+          "content": "{\"error\": \"\", \"response\": \"{'ip': '29.246.168.188'}\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+            "arguments": "{\n\"location\": \"29.246.168.188\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+          "content": "{\"error\": \"\", \"response\": \"None\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "search_telnum_location_for_telnum_location",
+            "arguments": "{\n\"telnum\": \"29.246.168.188\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "search_telnum_location_for_telnum_location",
+          "content": "{\"error\": \"\", \"response\": \"None\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_location_by_ip_address_for_search_location_by_ip_address",
+            "arguments": "{\n\"ip_address\": \"29.246.168.188\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_location_by_ip_address_for_search_location_by_ip_address",
+          "content": "{\"error\": \"\", \"response\": \"{'location': '江苏省南京市'}\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+            "arguments": "{\n\"location\": \"江苏省南京市\"\n}"
+          }
+        },
+        {
+          "role": "function",
+          "name": "get_coordinates_by_location_for_search_coordinates_by_location",
+          "content": "{\"error\": \"\", \"response\": \"北纬32°，西经118°\"}"
+        },
+        {
+          "role": "assistant",
+          "content": null,
+          "function_call": {
+            "name": "Finish",
+            "arguments": "{\n\"return_type\": \"give_answer\",\n\"final_answer\": \"域名www.zyw.com的经纬度是北纬32°，西经118°\"\n}"
+          }
+        }
+      ]
+    ],
+    "query": "请根据域名www.zyw.com查询经纬度"
+  }
+}

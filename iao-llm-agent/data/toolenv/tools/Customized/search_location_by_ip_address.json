@@ -1,0 +1,23 @@
+{
+    "tool_description": "To get location by IP address",
+    "tool_name": "search location by ip address",
+    "title": "search location by ip address",
+    "api_list": [
+        {
+            "name": "get_location_by_ip_address",
+            "url": "",
+            "description": "To get location with user-provided IP Address",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ip_address", 
+                    "type": "STRING", 
+                    "description": "Query the corresponding location according to the IP address provided by the user, e.g. 10.0.106.333", 
+                    "default": ""
+                }
+            ],
+            "optional_parameters": []
+        }
+    ],
+    "standardized_name": "search_location_by_ip_address"
+}

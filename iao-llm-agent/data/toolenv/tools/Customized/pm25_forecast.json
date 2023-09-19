@@ -1,0 +1,23 @@
+{
+    "tool_description": "To get PM2.5 Forecasts",
+    "tool_name": "pm25 forecast",
+    "title": "pm25 forecast",
+    "api_list": [
+        {
+            "name": "get_pm25_forecast",
+            "url": "",
+            "description": "Query PM2.5 forecasts based on user-supplied locations",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location", 
+                    "type": "STRING", 
+                    "description": "location to get pm2.5, e.g. Nanjing", 
+                    "default": ""
+                }
+            ],
+            "optional_parameters": []
+        }
+    ],
+    "standardized_name": "pm25_forecast"
+}

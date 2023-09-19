@@ -31,20 +31,19 @@
                 "--tool_root_dir", "data/toolenv_chinese/tools/",
                 "--model_name", "chatgpt_function", 
                 "--openai_key", "sk-kcfJcDXKztSEuMxaSqVjvuniMFIlz8HSr2xApuxivkNINiEc",
-                "--tool_corpus_path", "data/retrieval/corpus.tsv",
-                "--retrieval_model_path",
-                "/home/xk/zyw/playground/models/m3e-base-20230608",
-                "--retrieval_top_k",
-                "6",
+                "--tool_corpus_path", "data/retrieval_chinese/corpus.tsv",
+                "--retrieval_model_path", "/home/xk/zyw/playground/models/m3e-base-20230608",
+                "--retrieval_top_k", "6",
                 "--max_observation_length",
                 "1024",
                 "--search_method",
                 "DFS_woFilter_w2",
                 "--query_file_path",
-                "data/instruction/query_open_domain.json",
+                "data/instruction_chinese/query_open_domain.json",
                 "--answer_dir",
                 "data/answer_chinese/test",
-                "--use_retrieval"
+                "--use_retrieval", 
+                "--prompt_lang", "zh"
             ]
         }
     ]

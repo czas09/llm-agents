@@ -1,0 +1,23 @@
+{
+    "tool_description": "To get longitude and latitude by location",
+    "tool_name": "search coordinates by location",
+    "title": "search coordinates by location",
+    "api_list": [
+        {
+            "name": "get_coordinates_by_location",
+            "url": "",
+            "description": "Query the corresponding latitude and longitude based on the user-provided location.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location", 
+                    "type": "STRING", 
+                    "description": "Location to query latitude and longitude, e.g. Nanjing", 
+                    "default": ""
+                }
+            ],
+            "optional_parameters": []
+        }
+    ],
+    "standardized_name": "search_coordinates_by_location"
+}

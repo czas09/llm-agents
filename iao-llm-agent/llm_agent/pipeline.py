@@ -34,7 +34,7 @@ from utils import standardize, change_name, get_toolkits, check_toolkits
 
 
 class APIEnviron(BaseEnviron): 
-    def __init__(self, user_query, tool_descriptions, retriever, args, process_id): 
+    def __init__(self, user_query, tool_descriptions, retriever, args, process_id, prompt_lang): 
         self.tool_root_dir = args.tool_root_dir
         # self.api_customization = args.api_customization
         self.max_observation_length = args.max_observation_length
@@ -47,6 +47,7 @@ class APIEnviron(BaseEnviron):
         self.query_content = user_query["query"]
         self.functions = []
         self.api_name_reflect = {}    #
+        self.prompt_lang = prompt_lang
 
         if self.retriever is not None: 
             tools_for_this_query = self._retrieve_tools(self.query_content, self.top_k, self.tool_root_dir)
@@ -67,37 +68,63 @@ class APIEnviron(BaseEnviron):
 
         # TODO(@zyw): Finish作为候选工具之一
         # ToolBench 项目中专门定义了“Finish”工具，用于处理终止和重启的情况
-        finish_func = {
-            "name": "Finish", 
-            "description": "如果你认为你已经得到了可以回答任务的结果，请调用此函数来提供最终答案。或者，如果你意识到在当前状态下无法继续进行任务，请调用此函数来重新开始。请记住：你必须在尝试结束时始终调用此函数，而用户将只看到最终答案的部分，因此它应包含足够的信息。",
-            "parameters": {
-                "type": "object", 
-                "properties": {
-                    "return_type": {
-                        "type": "string", 
-                        "enum": [
-                            "give_answer", 
-                            "give_up_and_restart"
-                        ],
-                    },
-                    "final_answer": {
-                        "type": "string",
-                        "description": "你想给到用户的最终答案。如果“return_type”等于“give_answer”，那么你就应该提供这个“final_answer”字段", 
-                    }
-                }, 
-                "required": ["return_type"],
+        if self.prompt_lang == 'zh': 
+            finish_func = {
+                "name": "Finish", 
+                "description": "如果你认为你已经得到了可以回答任务的结果，请调用此函数来提供最终答案。或者，如果你意识到在当前状态下无法继续进行任务，请调用此函数来重新开始。请记住：你必须在尝试结束时始终调用此函数，而用户将只看到最终答案的部分，因此它应包含足够的信息。",
+                "parameters": {
+                    "type": "object", 
+                    "properties": {
+                        "return_type": {
+                            "type": "string", 
+                            "enum": [
+                                "give_answer", 
+                                "give_up_and_restart"
+                            ],
+                        },
+                        "final_answer": {
+                            "type": "string",
+                            "description": "你想给到用户的最终答案。如果“return_type”等于“give_answer”，那么你就应该提供这个“final_answer”字段", 
+                        }
+                    }, 
+                    "required": ["return_type"],
+                }
             }
-        }
+        else:    # 'en'
+            finish_func = {
+                "name": "Finish",
+                "description": "If you believe that you have obtained a result that can answer the task, please call this function to provide the final answer. Alternatively, if you recognize that you are unable to proceed with the task in the current state, call this function to restart. Remember: you must ALWAYS call this function at the end of your attempt, and the only part that will be shown to the user is the final answer, so it should contain sufficient information.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "return_type": {
+                            "type": "string",
+                            "enum": ["give_answer","give_up_and_restart"],
+                        },
+                        "final_answer": {
+                            "type": "string",
+                            "description": "The final answer you want to give the user. You should have this field if \"return_type\"==\"give_answer\"",
+                        }
+                    },
+                    "required": ["return_type"],
+                }
+            }
         self.functions.append(finish_func)
         self.CALL_MAX_TIME = 3
         # TODO(@zyw): 系统prompt中的任务描述字符串
-        self.task_description = f'''您应该使用函数来处理用户提出的实时查询。请记住：
+        if self.prompt_lang == 'zh': 
+            self.task_description = f'''您应该使用函数来处理用户提出的实时查询。请记住：
 1.任务结束时始终调用“Finish”函数。最终答案应包含足够的信息以供用户查看。如果您无法处理任务，或者发现函数调用总是失败（这说明该函数当前无效），请使用函数“Finish->give_up_and_restart”。
 2.不要使用原始工具名称，只使用子功能的名称。
 您可以访问以下工具：'''
+        else:    # en
+            self.task_description = f'''You should use functions to help handle the real time user querys. Remember:
+1.ALWAYS call \"Finish\" function at the end of the task. And the final answer should contain enough information to show to the user,If you can't handle the task, or you find that function calls always fail(the function is not valid now), use function Finish->give_up_and_restart.
+2.Do not use origin tool names, use only subfunctions' names.
+You have access of the following tools:\n'''
 
         # 在任务描述（task_description）的后面添加工具描述文本（tool_description）
-        for standardize_tool_name, tool_description in tool_descriptions: 
+        for index, (standardize_tool_name, tool_description) in enumerate(tool_descriptions): 
             tool_description = tool_description[:512].replace('\n', '').strip()
             if tool_description == "": 
                 tool_description = None
@@ -180,11 +207,20 @@ class APIEnviron(BaseEnviron):
 
         api_name = change_name(standardize(api_doc["api_name"]))
         openai_schema["name"] = "{}_for_{}".format(api_name, standard_tool_name)[-64:]
-        openai_schema["description"] = "这是“{}”工具的子功能，你可以使用这个工具。".format(standard_tool_name)
+        if self.prompt_lang == 'zh': 
+            openai_schema["description"] = "这是“{}”工具的子功能，你可以使用这个工具。".format(standard_tool_name)
+        else:    # en
+            # templete["description"] = f"This is the subfunction for tool \"{standard_tool_name}\", you can use this tool."
+            openai_schema["description"] = f"This is the subfunction for tool \"{standard_tool_name}\", you can use this tool."
+            
 
         if api_doc["api_description"].strip() != "": 
             truncated_description = api_doc["api_description"].strip().replace(api_doc["api_name"], openai_schema["name"])[:description_max_length]
-            openai_schema["description"] = "这个功能的描述文本如下：“{}”".format(truncated_description)
+            if self.prompt_lang == 'zh': 
+                openai_schema["description"] += "这个功能的描述文本如下：“{}”".format(truncated_description)
+            else:    # en
+                # templete["description"] = templete["description"] + f"The description of this function is: \"{tuncated_description}\""
+                openai_schema["description"] += f"The description of this function is: \"{truncated_description}\""
         
         if "required_parameters" in api_doc.keys() and len(api_doc["required_parameters"]) > 0: 
             # 必需参数
@@ -356,6 +392,7 @@ class Pipeline:
         self.answer_dir = args.answer_dir
         self.model = self._get_model()
         self.task_list = self._generate_task_list()
+        self.prompt_lang = args.prompt_lang
 
     def _get_model(self) -> str: 
         if self.model_name == "toolllama": 
@@ -407,7 +444,8 @@ class Pipeline:
     def _construct_chain(self, llm, openai_key, search_method, api_environ, process_id, single_chain_max_step, max_query_count): 
 
         if llm == "chatgpt_function": 
-            model = "gpt-3.5-turbo-16k-0613"
+            # model = "gpt-3.5-turbo-16k-0613"
+            model = "gpt-3.5-turbo-0613"
             llm = ChatGPT(model=model, openai_key=openai_key)
         elif llm == "davinci":    # TODO(@zyw)
             # model = "text-davinci-003"
@@ -452,7 +490,7 @@ class Pipeline:
         if os.path.exists(answer_json_path): 
             return 
         
-        api_environ = APIEnviron(user_query, tool_descriptions, retriever, args, process_id=process_id)
+        api_environ = APIEnviron(user_query, tool_descriptions, retriever, args, process_id=process_id, prompt_lang=self.prompt_lang)
 
         query_content = user_query["query"]
 

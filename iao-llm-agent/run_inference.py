@@ -24,6 +24,7 @@ if __name__ == "__main__":
     parser.add_argument('--search_method', type=str, default="CoT@1", required=False, help='method for answer generation: CoT@n, Reflexion@n, BFS, DFS, UCT_vote')
     parser.add_argument('--query_file_path', type=str, default="", required=False, help='input path')
     parser.add_argument('--answer_dir', type=str, default="",required=False, help='output path')
+    parser.add_argument('--prompt_lang', type=str, default="en", required=False, help='prompt language: en or zh')
     # parser.add_argument('--toolbench_key', type=str, default="",required=False, help='your toolbench key to request rapidapi service')
     # parser.add_argument('--rapidapi_key', type=str, default="",required=False, help='your rapidapi key to request rapidapi service')
     # parser.add_argument('--use_rapidapi_key', action="store_true", help="To use customized rapidapi service or not.")

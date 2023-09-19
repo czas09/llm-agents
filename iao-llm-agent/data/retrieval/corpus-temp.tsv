@@ -1,2 +1,0 @@
-docid	document_content
-1	"{""category_name"": ""Customized"", ""tool_name"": ""hello world"", ""api_name"": ""get_hello_world"", ""api_description"": ""To get 'hello world'."", ""required_parameters"": [], ""optional_parameters"": [], ""method"": ""GET""}"

@@ -4,7 +4,8 @@ import json
 
 import pandas as pd
 
-input_dir = "data/toolenv_chinese/tools"
+# input_dir = "data/toolenv_chinese/tools"
+input_dir = "data/toolenv/tools"
 
 # print(os.listdir(input_dir))
 

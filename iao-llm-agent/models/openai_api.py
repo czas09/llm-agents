@@ -9,7 +9,7 @@ from models.base import BaseLLM
 
 
 @retry(wait=wait_random_exponential(min=1, max=40), stop=stop_after_attempt(3))
-def chat_completion_request(openai_key, messages, functions=None, function_call=None, key_pos=None, model="gpt-3.5-turbo-16k-0613", stop=None, process_id=0, **args): 
+def chat_completion_request(openai_key, messages, functions=None, function_call=None, key_pos=None, model="gpt-3.5-turbo-0613", stop=None, process_id=0, **args): 
     use_messages = []
     for message in messages: 
         if not ("valid" in message.keys() and message["valid"] == False): 
@@ -31,13 +31,12 @@ def chat_completion_request(openai_key, messages, functions=None, function_call=
         request_body.update({"function_call": function_call})
 
     try:
-        if model == "gpt-3.5-turbo-16k-0613":
+        # if model == "gpt-3.5-turbo-16k-0613":
+        if model == "gpt-3.5-turbo-0613":
             openai.api_key = openai_key
         else:
             raise NotImplementedError
-        openai_response = openai.ChatCompletion.create(
-            **request_body,
-        )
+        openai_response = openai.ChatCompletion.create(**request_body)
         openai_response = json.loads(str(openai_response))
         return openai_response 
     except Exception as e:
@@ -48,7 +47,7 @@ def chat_completion_request(openai_key, messages, functions=None, function_call=
 
 class ChatGPT(BaseLLM): 
     
-    def __init__(self, model="gpt-3.5-turbo-16k-0613", openai_key=""): 
+    def __init__(self, model="gpt-3.5-turbo-0613", openai_key=""): 
         self.model=model
         self.conversation_history = []
         self.openai_key = openai_key

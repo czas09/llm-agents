@@ -1,0 +1,23 @@
+{
+    "tool_description": "To get the location of the telnum",
+    "tool_name": "telnum location",
+    "title": "telnum location",
+    "api_list": [
+        {
+            "name": "search_telnum_location",
+            "url": "",
+            "description": "Query the location according to the user-provided telnum.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "telnum", 
+                    "type": "STRING", 
+                    "description": "telnum to get the location，e.g. 13254275648", 
+                    "default": ""
+                }
+            ],
+            "optional_parameters": []
+        }
+    ],
+    "standardized_name": "telnum_location"
+}

@@ -1,0 +1,23 @@
+{
+    "tool_description": "weather forecast",
+    "tool_name": "weather forecast",
+    "title": "weather forecast",
+    "api_list": [
+        {
+            "name": "get_weather_forecast",
+            "url": "",
+            "description": "To get the weather forecast with user-provided location",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location", 
+                    "type": "STRING", 
+                    "description": "The location toget the weather forecast, e.g. Nanjing", 
+                    "default": ""
+                }
+            ],
+            "optional_parameters": []
+        }
+    ],
+    "standardized_name": "weather_forecast"
+}

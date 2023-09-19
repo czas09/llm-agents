@@ -6,8 +6,13 @@ from typing import List
 
 from search_methods.base import BaseSearchMethod
 from tree.tree import Tree, TreeNode
-from prompts.react_prompts import FORMAT_INSTRUCTIONS_SYSTEM_FUNCTION_ZH, FORMAT_INSTRUCTIONS_USER_FUNCTION_ZH
-from prompts.tree_search_prompts import DIVERSITY_PROMPT_ZH
+from prompts.react_prompts import (
+    FORMAT_INSTRUCTIONS_SYSTEM_FUNCTION_ZH, 
+    FORMAT_INSTRUCTIONS_SYSTEM_FUNCTION, 
+    FORMAT_INSTRUCTIONS_USER_FUNCTION_ZH, 
+    FORMAT_INSTRUCTIONS_USER_FUNCTION, 
+)
+from prompts.tree_search_prompts import DIVERSITY_PROMPT_ZH, DIVERSITY_PROMPT
 from models.base import BaseLLM
 from llm_agent.base_environ import BaseEnviron
 from rank.rank_candidates import rank2_subfix, sum_based_rankn
@@ -19,6 +24,7 @@ class DFSChain(BaseSearchMethod):
         super(DFSChain, self).__init__(llm, env, process_id)
         self.llm: BaseLLM = llm
         self.env = env
+        self.prompt_lang = self.env.prompt_lang
         self.process_id = process_id
         self.restart()
 
@@ -75,7 +81,9 @@ class DFSChain(BaseSearchMethod):
 
                     # temp_child_node 非终点；非“Action Input”节点；有子节点
                     while not temp_child_node.is_terminal and temp_child_node.node_type != "Action Input" and len(temp_child_node.children) > 0: 
-                        temp_child_node = temp_current_node.children[0]
+                    # while not temp_node.is_terminal and temp_node.node_type != "Action Input" and len(temp_node.children) > 0:
+                        temp_child_node = temp_child_node.children[0]
+                        # temp_node = temp_node.children[0]
                     if temp_child_node.node_type == "Action Input": 
                         json_obj = {
                             "name": temp_child_node.father.description, 
@@ -88,8 +96,15 @@ class DFSChain(BaseSearchMethod):
                 if len(json_list) > 0: 
                     former_candidates_description += f"{json.dumps(json_list, indent=2, ensure_ascii=False)}\n"
                     if temp_current_node.observation != "": 
-                        former_candidates_description += f"此外，你之前的观察结果(observation)是：{temp_current_node.observation}\n"
-                    diverse_prompt = DIVERSITY_PROMPT_ZH
+                        if self.prompt_lang == 'zh': 
+                            former_candidates_description += f"此外，你之前的观察结果(observation)是：{temp_current_node.observation}\n"
+                        else:    # en
+                            former_candidates_description += f"again, your former observation: {temp_current_node.observation}\n"
+                    
+                    if self.prompt_lang == 'zh': 
+                        diverse_prompt = DIVERSITY_PROMPT_ZH
+                    else:    # en
+                        diverse_prompt = DIVERSITY_PROMPT
                     diverse_prompt = diverse_prompt.replace(
                         "{previous_candidate}", 
                         former_candidates_description)
@@ -264,15 +279,21 @@ class DFSChain(BaseSearchMethod):
         self.tree.root.node_type = "Action Input"
         self.tree.root.env = deepcopy(self.env)
 
-        system_instruction = FORMAT_INSTRUCTIONS_SYSTEM_FUNCTION_ZH
+        if self.prompt_lang == 'zh': 
+            system_instruction = FORMAT_INSTRUCTIONS_SYSTEM_FUNCTION_ZH
+        else:    # en
+            system_instruction = FORMAT_INSTRUCTIONS_SYSTEM_FUNCTION
         system_instruction = system_instruction.replace(
             "{task_description}", 
             self.env.task_description)
         self.tree.root.messages.append({
             "role": "system", 
             "content": system_instruction})
-        
-        user_input = FORMAT_INSTRUCTIONS_USER_FUNCTION_ZH
+
+        if self.prompt_lang == 'zh': 
+            user_input = FORMAT_INSTRUCTIONS_USER_FUNCTION_ZH
+        else:    # en
+            user_input = FORMAT_INSTRUCTIONS_USER_FUNCTION
         user_input = user_input.replace(
             "{input_description}", 
             self.env.query_content)

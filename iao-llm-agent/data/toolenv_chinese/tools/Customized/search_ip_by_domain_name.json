@@ -1,0 +1,23 @@
+{
+    "tool_description": "根据域名查询IP",
+    "tool_name": "search ip by domain name",
+    "title": "search ip by domain name",
+    "api_list": [
+        {
+            "name": "get_ip_by_domain_name",
+            "url": "",
+            "description": "根据用户提供的域名查询对应的IP",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "domain_name", 
+                    "type": "STRING", 
+                    "description": "需要查询IP的域名，比如：www.zyw.com", 
+                    "default": ""
+                }
+            ],
+            "optional_parameters": []
+        }
+    ],
+    "standardized_name": "search_ip_by_domain_name"
+}

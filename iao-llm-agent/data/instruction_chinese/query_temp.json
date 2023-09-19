@@ -2,5 +2,13 @@
     {
         "query": "I want to get a 'hello world' string.",
         "query_id": 200004
+    }, 
+    {
+        "query": "请帮我查询南京现在的天气情况",
+        "query_id": 200005
+    }, 
+    {
+        "query": "南京今天天气怎么样？PM2.5是多少？",
+        "query_id": 200006
     }
 ]
