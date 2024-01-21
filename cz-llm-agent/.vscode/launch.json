@@ -1,0 +1,51 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "openai_api",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true, 
+            "env": {
+                "OPENAI_API_BASE": "https://key.langchain.com.cn/v1", 
+                "OPENAI_API_PREFIX": "https://key.langchain.com.cn", 
+            }
+        },
+        {
+            "name": "llm-agents",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true, 
+            "env": {
+                "OPENAI_API_BASE": "https://key.langchain.com.cn/v1", 
+                "OPENAI_API_PREFIX": "https://key.langchain.com.cn", 
+            }, 
+            "args": [
+                "--tool_root_dir", "data/toolenv/tools/",
+                "--model_name", "chatgpt_function", 
+                "--openai_key", "sk-kcfJcDXKztSEuMxaSqVjvuniMFIlz8HSr2xApuxivkNINiEc",
+                "--tool_corpus_path", "data/retrieval/corpus.tsv",
+                "--retrieval_model_path",
+                "/home/xk/zyw/playground/models/m3e-base-20230608",
+                "--retrieval_top_k",
+                "2",
+                "--max_observation_length",
+                "1024",
+                "--search_method",
+                "DFS_woFilter_w2",
+                "--query_file_path",
+                "data/instruction/query.json",
+                "--answer_dir",
+                "data/answer/test",
+                "--use_retrieval"
+            ]
+        }
+    ]
+}
